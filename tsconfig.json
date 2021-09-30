@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "sourceMap": true,
+    "target": "es2018",
+    "outDir": "build",
+    "lib": ["es6", "es2020"],
+    "resolveJsonModule": true,
+    "types": ["node", "jest", "@types/node", "@types/jest"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "include": ["src/*.ts", "src/**/*.ts", "src/**/*.js"],
+  "exclude": ["src/**/*.spec.ts", "src/**/*.spec.js", "build", "node_modules"]
+}
