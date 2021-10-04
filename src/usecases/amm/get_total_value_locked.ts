@@ -26,7 +26,7 @@ import config, {
   IPoolsQueryResultFieldsDTO,
 } from '~/infra/config'
 
-const getPoolToken = async (
+export const getPoolToken = async (
   poolTokenContract: ERC20,
   chainId: ChainId,
   poolAddress: string,
@@ -57,7 +57,7 @@ const getPoolToken = async (
 const masterBaristaGraph = config.get('masterBaristaGraph') 
 const exchangeGraph = config.get('exchangeGraph') 
 
-async function processLiquidityPool(
+export async function processLiquidityPool(
   pool: IPoolsQueryResultFieldsDTO,
   pair: IPairFieldsDTO,
 ): Promise<BigNumber> {
@@ -72,7 +72,7 @@ async function processLiquidityPool(
     .div(parseEther(Number(pair.totalSupply).toFixed(18)))
 }
 
-const singleAssetTotalPoolValue = async (
+export const singleAssetTotalPoolValue = async (
   poolToken: Token,
   pairContractFactory: (pairAddress?: string) => LatteSwapPair | null,
   poolBalance: BigNumber,
@@ -109,7 +109,7 @@ const singleAssetTotalPoolValue = async (
   return totalPoolValue
 }
 
-const processSingleAsset = async (
+export const processSingleAsset = async (
   pool: IPoolsQueryResultFieldsDTO,
   poolTokenContract: ERC20,
   alpacaVaultContract: IAlpacaAdapter,
@@ -153,7 +153,7 @@ const processSingleAsset = async (
 
 // TODO: workaround method, need to be able to address a hop if the pair is not -BNB or -BUSD
 // NOTE: WORKS only for PCS LatteBUSD 19/09/21
-const processPCSLatteBUSD = async (
+export const processPCSLatteBUSD = async (
   pool: IPoolsQueryResultFieldsDTO,
   pairContractFactory: (
     pairAddress?: string | undefined,
